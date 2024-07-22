@@ -19,15 +19,12 @@ class Result {
   public static List<Integer> gradingStudents(List<Integer> grades) {
     // Write your code here
     return grades.stream().map(grade -> {
-      if (grade < 38) {
+      if (grade < 38)
         return grade;
-      }
       int nextMultipleOfFive = (grade / 5 + 1) * 5;
       return nextMultipleOfFive - grade < 3 ? nextMultipleOfFive : grade;
     }).collect(toList());
-
   }
-
 }
 
 public class Solution {
