@@ -9,6 +9,7 @@ import java.util.concurrent.*;
 import java.util.function.*;
 import java.util.regex.*;
 import java.util.stream.*;
+
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
@@ -28,7 +29,20 @@ class Result {
 
   public static void countApplesAndOranges(int s, int t, int a, int b, List<Integer> apples, List<Integer> oranges) {
     // Write your code here
-
+    int appleCount = 0;
+    int orangeCount = 0;
+    for (Integer apple : apples) {
+      if (a + apple >= s && a + apple <= t) {
+        appleCount++;
+      }
+    }
+    for (Integer orange : oranges) {
+      if (b + orange >= s && b + orange <= t) {
+        orangeCount++;
+      }
+    }
+    System.out.println(appleCount);
+    System.out.println(orangeCount);
   }
 
 }
@@ -57,11 +71,11 @@ public class Solution {
 
     List<Integer> apples = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
             .map(Integer::parseInt)
-            .collect(toList());
+            .toList();
 
     List<Integer> oranges = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
             .map(Integer::parseInt)
-            .collect(toList());
+            .toList();
 
     Result.countApplesAndOranges(s, t, a, b, apples, oranges);
 
