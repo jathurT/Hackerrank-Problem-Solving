@@ -23,7 +23,6 @@ class Result {
       return "NO";
     }
   }
-
 }
 
 public class Solution {
