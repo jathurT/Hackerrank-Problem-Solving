@@ -22,9 +22,24 @@ class Result {
 
   public static List<Integer> dynamicArray(int n, List<List<Integer>> queries) {
     // Write your code here
-
+    List<List<Integer>> seqList = new ArrayList<>();
+    IntStream.range(0, n).forEach(i -> seqList.add(new ArrayList<>()));
+    int lastAnswer = 0;
+    List<Integer> result = new ArrayList<>();
+    for (List<Integer> query : queries) {
+      int queryType = query.get(0);
+      int x = query.get(1);
+      int y = query.get(2);
+      int idx = (x ^ lastAnswer) % n;
+      if (queryType == 1) {
+        seqList.get(idx).add(y);
+      } else {
+        lastAnswer = seqList.get(idx).get(y % seqList.get(idx).size());
+        result.add(lastAnswer);
+      }
+    }
+    return result;
   }
-
 }
 
 public class Solution {
