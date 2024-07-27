@@ -35,7 +35,7 @@ class Result {
             x * (y / gcd.apply(x, y));
 
     // Function to calculate the GCD of a list of numbers
-    int gcdOfB = b.stream().reduce(b.get(0), (x, y) -> gcd.apply(x, y));
+    int gcdOfB = b.stream().reduce(b.get(0), gcd::apply);
     // Function to calculate the LCM of a list of numbers
     int lcmOfA = a.stream().reduce(a.get(0), lcm::apply);
     // Count integers that are multiples of lcmOfList and divisors of gcdOfList
