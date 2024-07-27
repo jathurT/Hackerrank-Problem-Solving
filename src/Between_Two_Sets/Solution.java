@@ -20,6 +20,7 @@ class Result {
 
   public static int getTotalX(List<Integer> a, List<Integer> b) {
     // Function to calculate the gcd of two numbers
+    // using Euclidean algorithm
     BiFunction<Integer, Integer, Integer> gcd = (x, y) -> {
       while (y != 0) {
         int temp = y;
