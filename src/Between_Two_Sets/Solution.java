@@ -75,3 +75,4 @@ class Result {
       bufferedWriter.close();
     }
   }
+}
