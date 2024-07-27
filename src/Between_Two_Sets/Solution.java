@@ -36,7 +36,7 @@ class Result {
     // Function to calculate the GCD of a list of numbers
     int gcdOfB = b.stream().reduce(b.get(0), (x, y) -> gcd.apply(x, y));
     // Function to calculate the LCM of a list of numbers
-    int lcmOfA = a.stream().reduce(a.get(0), (x, y) -> lcm.apply(x, y));
+    int lcmOfA = a.stream().reduce(a.get(0), lcm::apply);
     // Count integers that are multiples of lcmOfList and divisors of gcdOfList
     int count = 0;
     for (int i = lcmOfA, j = 2; i <= gcdOfB; i = lcmOfA * j, j++) {
@@ -47,7 +47,7 @@ class Result {
     return count;
   }
 
-  public class Solution {
+  public static class Solution {
     public static void main(String[] args) throws IOException {
       BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
       BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
