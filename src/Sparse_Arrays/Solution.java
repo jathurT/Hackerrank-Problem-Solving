@@ -39,6 +39,7 @@ class Result {
                             .count())
             .collect(toList()
             );
+
   }
 
 }
