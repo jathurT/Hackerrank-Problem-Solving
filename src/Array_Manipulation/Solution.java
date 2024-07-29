@@ -21,7 +21,9 @@ class Result {
 
   public static long arrayManipulation(int n, List<List<Integer>> queries) {
     // Write your code here
-    long[] arr = new long[n + 1];
+//    Array Difference Approach
+//    Time Complexity: O(n + m)
+    long[] arr = new long[n + 1]; // Note: Extra element for easier boundary handling
     for (List<Integer> query : queries) {
       int a = query.get(0);
       int b = query.get(1);
