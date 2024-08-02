@@ -3,6 +3,7 @@ package Get_Node_Value;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Solution {
@@ -63,7 +64,7 @@ public class Solution {
       }
       count++;
     }
-    return result.data;
+    return Objects.requireNonNull(result).data;
   }
 
   private static final Scanner scanner = new Scanner(System.in);
