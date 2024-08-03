@@ -21,18 +21,28 @@ class Result {
 
   public static int sockMerchant(int n, List<Integer> ar) {
     // Write your code here
-    HashMap<Integer, Integer> pairs = new HashMap<>();
+    Map<Integer, Integer> map = new HashMap<>();
     for (int i = 0; i < n; i++) {
-      if (!pairs.containsKey(ar.get(i))) {
-        pairs.put(ar.get(i), 1);
-      } else
-        pairs.put(ar.get(i), pairs.get(ar.get(i)) + 1);
+      map.put(ar.get(i), map.getOrDefault(ar.get(i), 0) + 1);
     }
     int count = 0;
-    for (Map.Entry<Integer, Integer> entrySet : pairs.entrySet()) {
-      count += (entrySet.getValue() / 2);
+    for (int value : map.values()) {
+      count += value / 2;
     }
     return count;
+
+//    HashMap<Integer, Integer> pairs = new HashMap<>();
+//    for (int i = 0; i < n; i++) {
+//      if (!pairs.containsKey(ar.get(i))) {
+//        pairs.put(ar.get(i), 1);
+//      } else
+//        pairs.put(ar.get(i), pairs.get(ar.get(i)) + 1);
+//    }
+//    int count = 0;
+//    for (Map.Entry<Integer, Integer> entrySet : pairs.entrySet()) {
+//      count += (entrySet.getValue() / 2);
+//    }
+//    return count;
   }
 
 }
