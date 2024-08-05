@@ -18,16 +18,19 @@ class Result {
 
   public static int countingValleys(int steps, String path) {
     // Write your code here
-    List<Character> characterList = path
-            .replaceAll("\\s+", "")
-            .chars()
-            .mapToObj(c -> (char) c)
-            .toList();
+    int level = 0;
+    int valleys = 0;
     for (int i = 0; i < steps; i++) {
-      int numOfValley = 0;
-
+      if (path.charAt(i) == 'U') {
+        level++;
+      } else {
+        level--;
+      }
+      if (level == 0 && path.charAt(i) == 'U') {
+        valleys++;
+      }
     }
-
+    return valleys;
   }
 
 }
