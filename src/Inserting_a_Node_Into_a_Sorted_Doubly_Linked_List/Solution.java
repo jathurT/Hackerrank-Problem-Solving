@@ -54,33 +54,55 @@ public class Solution {
     }
   }
 
-  class Result {
+  //  public static DoublyLinkedListNode sortedInsert(DoublyLinkedListNode llist, int data) {
+//    // Write your code here
+//    DoublyLinkedListNode newNode = new DoublyLinkedListNode(data);
+//    if (llist == null) {
+//      return newNode;
+//    } else if (data <= llist.data) {
+//      newNode.next = llist;
+//      llist.prev = newNode;
+//      return newNode;
+//    } else {
+//      DoublyLinkedListNode rest = sortedInsert(llist.next, data);
+//      llist.next = rest;
+//      rest.prev = llist;
+//      return llist;
+//    }
+//  }
 
-    /*
-     * Complete the 'sortedInsert' function below.
-     *
-     * The function is expected to return an INTEGER_DOUBLY_LINKED_LIST.
-     * The function accepts following parameters:
-     *  1. INTEGER_DOUBLY_LINKED_LIST llist
-     *  2. INTEGER data
-     */
+  public static DoublyLinkedListNode sortedInsert(DoublyLinkedListNode llist, int data) {
+    DoublyLinkedListNode newNode = new DoublyLinkedListNode(data);
 
-    /*
-     * For your reference:
-     *
-     * DoublyLinkedListNode {
-     *     int data;
-     *     DoublyLinkedListNode next;
-     *     DoublyLinkedListNode prev;
-     * }
-     *
-     */
-
-    public static DoublyLinkedListNode sortedInsert(DoublyLinkedListNode llist, int data) {
-      // Write your code here
-
+    // Case 1: The list is empty
+    if (llist == null) {
+      return newNode;
     }
 
+    // Case 2: Insert before the head
+    if (data <= llist.data) {
+      newNode.next = llist;
+      llist.prev = newNode;
+      return newNode;
+    }
+
+    // Traverse the list to find the insertion point
+    DoublyLinkedListNode current = llist;
+    while (current.next != null && current.next.data < data) {
+      current = current.next;
+    }
+
+    // Insert the new node
+    newNode.next = current.next;
+    newNode.prev = current;
+
+    if (current.next != null) {
+      current.next.prev = newNode;
+    }
+
+    current.next = newNode;
+
+    return llist;
   }
 
   private static final Scanner scanner = new Scanner(System.in);
