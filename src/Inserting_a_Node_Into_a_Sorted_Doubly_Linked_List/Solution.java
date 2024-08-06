@@ -99,9 +99,7 @@ public class Solution {
     if (current.next != null) {
       current.next.prev = newNode;
     }
-
     current.next = newNode;
-
     return llist;
   }
 
