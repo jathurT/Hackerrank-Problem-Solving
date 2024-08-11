@@ -1,6 +1,9 @@
 package Tree_Top_View;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 class Node {
   Node left;
@@ -16,6 +19,16 @@ class Node {
 
 class Solution {
 
+  static class Pair {
+    Node node;
+    int hd;
+
+    public Pair(Node node, int hd) {
+      this.node = node;
+      this.hd = hd;
+    }
+  }
+
   /*
 
     class Node
@@ -23,8 +36,33 @@ class Solution {
       Node left;
       Node right;
   */
-  public static void topView(Node root) {
+  static void topView(Node root) {
+    if (root == null)
+      return;
+    TreeMap<Integer, Integer> map = new TreeMap<>();
+    Queue<Pair> queue = new LinkedList<>();
+    queue.add(new Pair(root, 0));
 
+    while (!queue.isEmpty()) {
+      Pair temp = queue.poll();
+      int hd = temp.hd;
+      Node node = temp.node;
+
+      if (!map.containsKey(hd)) {
+        map.put(hd, node.data);
+      }
+
+      if (node.left != null) {
+        queue.add(new Pair(node.left, hd - 1));
+      }
+
+      if (node.right != null) {
+        queue.add(new Pair(node.right, hd + 1));
+      }
+    }
+    for (int value : map.values()) {
+      System.out.print(value + " ");
+    }
 
   }
 
