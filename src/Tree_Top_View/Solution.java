@@ -29,13 +29,6 @@ class Solution {
     }
   }
 
-  /*
-
-    class Node
-      int data;
-      Node left;
-      Node right;
-  */
   static void topView(Node root) {
     if (root == null)
       return;
