@@ -16,13 +16,6 @@ class Node {
 
 class Solution {
 
-  /*
-
-    class Node
-      int data;
-      Node left;
-      Node right;
-  */
   public static void levelOrder(Node root) {
     if (root == null)
       return;
