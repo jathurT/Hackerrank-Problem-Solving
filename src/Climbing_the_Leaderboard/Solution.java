@@ -22,9 +22,9 @@ class Result {
       }
     }
     int j = uniqueRanked.size() - 1;
-    for (int i = 0; i < player.size(); i++) {
+    for (Integer scoreOfPlayer : player) {
       while (j >= 0) {
-        if (player.get(i) >= uniqueRanked.get(j)) {
+        if (scoreOfPlayer >= uniqueRanked.get(j)) {
           j--;
         } else {
           result.add(j + 2);
