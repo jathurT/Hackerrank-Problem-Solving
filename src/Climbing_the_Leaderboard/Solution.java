@@ -11,15 +11,6 @@ import static java.util.stream.Collectors.toList;
 
 class Result {
 
-  /*
-   * Complete the 'climbingLeaderboard' function below.
-   *
-   * The function is expected to return an INTEGER_ARRAY.
-   * The function accepts following parameters:
-   *  1. INTEGER_ARRAY ranked
-   *  2. INTEGER_ARRAY player
-   */
-
   public static List<Integer> climbingLeaderboard(List<Integer> ranked, List<Integer> player) {
     // Write your code here
     List<Integer> result = new ArrayList<>();
@@ -46,7 +37,6 @@ class Result {
     }
     return result;
   }
-
 }
 
 public class Solution {
