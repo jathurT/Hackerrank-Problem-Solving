@@ -1,8 +1,6 @@
 package Designer_PDF_Viewer;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -19,7 +17,6 @@ class Result {
     }
     return maxHeight * word.length();
   }
-
 }
 
 public class Solution {
