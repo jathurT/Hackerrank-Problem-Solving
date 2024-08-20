@@ -3,9 +3,10 @@ package Tree_Huffman_Decoding;
 import java.util.*;
 
 abstract class Node implements Comparable<Node> {
-  public  int frequency; // the frequency of this tree
-  public  char data;
-  public  Node left, right;
+  public int frequency; // the frequency of this tree
+  public char data;
+  public Node left, right;
+
   public Node(int freq) {
     frequency = freq;
   }
@@ -17,7 +18,6 @@ abstract class Node implements Comparable<Node> {
 }
 
 class HuffmanLeaf extends Node {
-
 
   public HuffmanLeaf(int freq, char val) {
     super(freq);
@@ -47,13 +47,15 @@ class Decoding {
 */
 
   void decode(String s, Node root) {
-
-
-
+    Node current = root;
+    for (int i = 0; i < s.length(); i++) {
+      current = s.charAt(i) == '0' ? current.left : current.right;
+      if (current.left == null && current.right == null) {
+        System.out.print(current.data);
+        current = root;
+      }
+    }
   }
-
-
-
 }
 
 
@@ -67,9 +69,9 @@ public class Solution {
     // one for each non-empty character
     for (int i = 0; i < charFreqs.length; i++)
       if (charFreqs[i] > 0)
-        trees.offer(new HuffmanLeaf(charFreqs[i], (char)i));
+        trees.offer(new HuffmanLeaf(charFreqs[i], (char) i));
 
-    assert trees.size() > 0;
+    assert !trees.isEmpty();
 
     // loop until there is only one tree left
     while (trees.size() > 1) {
@@ -84,38 +86,38 @@ public class Solution {
     return trees.poll();
   }
 
-  public static Map<Character,String> mapA=new HashMap<Character ,String>();
+  public static Map<Character, String> mapA = new HashMap<Character, String>();
 
   public static void printCodes(Node tree, StringBuffer prefix) {
 
     assert tree != null;
 
     if (tree instanceof HuffmanLeaf) {
-      HuffmanLeaf leaf = (HuffmanLeaf)tree;
+      HuffmanLeaf leaf = (HuffmanLeaf) tree;
 
       // print out character, frequency, and code for this leaf (which is just the prefix)
       //System.out.println(leaf.data + "\t" + leaf.frequency + "\t" + prefix);
-      mapA.put(leaf.data,prefix.toString());
+      mapA.put(leaf.data, prefix.toString());
 
     } else if (tree instanceof HuffmanNode) {
-      HuffmanNode node = (HuffmanNode)tree;
+      HuffmanNode node = (HuffmanNode) tree;
 
       // traverse left
       prefix.append('0');
       printCodes(node.left, prefix);
-      prefix.deleteCharAt(prefix.length()-1);
+      prefix.deleteCharAt(prefix.length() - 1);
 
       // traverse right
       prefix.append('1');
       printCodes(node.right, prefix);
-      prefix.deleteCharAt(prefix.length()-1);
+      prefix.deleteCharAt(prefix.length() - 1);
     }
   }
 
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
 
-    String test= input.next();
+    String test = input.next();
 
     // we will assume that all our characters will have
     // code less than 256, for simplicity
@@ -132,7 +134,7 @@ public class Solution {
     printCodes(tree, new StringBuffer());
     StringBuffer s = new StringBuffer();
 
-    for(int i = 0; i < test.length(); i++) {
+    for (int i = 0; i < test.length(); i++) {
       char c = test.charAt(i);
       s.append(mapA.get(c));
     }
