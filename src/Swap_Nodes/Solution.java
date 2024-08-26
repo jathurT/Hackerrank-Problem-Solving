@@ -23,7 +23,6 @@ class Node {
 
 class Result {
 
-  // Modified inOrder method to populate the result list
   public static void inOrder(Node root, List<Integer> resultList) {
     if (root == null) {
       return;
