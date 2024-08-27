@@ -15,9 +15,12 @@ class Result {
 
   public static void extraLongFactorials(int n) {
     // Write your code here
-
+    BigInteger result = BigInteger.ONE;
+    for (int i = 1; i <= n; i++) {
+      result = result.multiply(BigInteger.valueOf(i));
+    }
+    System.out.println(result);
   }
-
 }
 
 public class Solution {
