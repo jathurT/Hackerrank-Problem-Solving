@@ -16,9 +16,10 @@ class Result {
 
   public static int squares(int a, int b) {
     // Write your code here
-
+    int lowerBound = (int) Math.ceil(Math.sqrt(a));
+    int upperBound = (int) Math.floor(Math.sqrt(b));
+    return upperBound - lowerBound + 1;
   }
-
 }
 
 public class Solution {
